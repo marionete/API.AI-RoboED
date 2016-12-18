@@ -30,6 +30,7 @@ def processRequest(req):
         if host is None:
             return "ERRO!"
     url = API_CONPET + makeTextQuery(req).encode('utf8')
+    result = urllib.urlopen(url).read()
     res = makeWebhookResult(result)
     return res
 
