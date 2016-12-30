@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-#-*- coding: utf-8 -*-
-# encoding: utf-8
+# -*- coding:utf-8 -*-
 
 import random
 import urllib
@@ -28,7 +27,18 @@ def processRequest(req):
     if req.get("result").get("action") != "ApiConpet":
         return {}
         if host is None:
-            return "ERRO!"
+            return {
+                "speech": "ERROR BOT! Missing the host",
+                "displayText": "ERROR BOT! Missing the host",
+                "source": "ApiSimsimi"
+            }
+    text = makeTextQuery(req).encode('utf8')
+    if text == False:
+        return {
+            "speech": "ERROR BOT! " + random.choice(error_msg),
+            "displayText": "ERROR BOT! " + random.choice(error_msg),
+            "source": "ApiConpet"
+        }
     url = API_CONPET + makeTextQuery(req).encode('utf8')
     result = urllib.urlopen(url).read()
     res = makeWebhookResult(result)
@@ -37,11 +47,7 @@ def processRequest(req):
 def makeTextQuery(req):
     mentioned_text = req.get("result").get("resolvedQuery")
     if mentioned_text is None:
-        return {
-            "speech": random.choice(error_msg),
-            "displayText": random.choice(error_msg),
-            "source": "ApiConpet"
-        }
+        return False
     return mentioned_text
 
 def makeWebhookResult(result):
@@ -54,5 +60,5 @@ def makeWebhookResult(result):
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
-    print "Starting app on port: %d" % port
+    print("Starting app on port: %d" % port)
     app.run(debug=False, port=port, host='0.0.0.0')
