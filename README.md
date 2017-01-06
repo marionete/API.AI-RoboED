@@ -1,5 +1,3 @@
-Artificial Intelegincia simsimi request via webapp for API.AI
-
 ## Instructions:
 Open the `config.py` file and to configure it, you will add your keys and add the other information as requested - follow the example below:
 
