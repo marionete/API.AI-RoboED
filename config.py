@@ -4,7 +4,7 @@
 timeout = 5
 debug = False
 ChatADM = "-1001083924806" ### CHAT FROM ADM
-source = ""
+source = "ROBOED"
 WeatherKey = ""
 token = "423177099:AAGhY6jBPaqsWK2DmrwGxRePAenmNETPKRc" ## TOKEN KEY FROM BOOT FROM TELEGRAM
 telegram = "https://api.telegram.org/bot{token}/"
