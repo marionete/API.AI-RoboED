@@ -26,7 +26,7 @@ def AIResquest(req):
      return {}
  MsgTxt = req.get("result").get("parameters").get("any").encode('utf8')
  print("Request: " + json.dumps(req, indent=4))
- result = urllib.urlopen(AiApi.format(host="", BotID="", msg=MsgTxt)).read() ## DEFINING URL
+ result = urllib.urlopen(AiApi.format(host="www.ed.compet.gov", BotID="423177099", msg=MsgTxt)).read() ## DEFINING URL
  clean = re.compile('<[^<>]*>') ## REMOVING HTML
  result = re.sub(clean, '', result)
  print("Response: " + result)
